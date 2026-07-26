@@ -4,6 +4,9 @@ set -ouex pipefail
 
 # Copy the contents of system_files/ of the git repo to /
 cp -avf "/ctx/system_files"/. /
+# Missouri OS branding
+sed -i 's/^NAME=.*/NAME="Missouri OS"/' /usr/lib/os-release
+sed -i 's/^PRETTY_NAME=.*/PRETTY_NAME="Missouri OS"/' /usr/lib/os-release
 
 ### Install packages
 
