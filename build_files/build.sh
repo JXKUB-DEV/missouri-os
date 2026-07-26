@@ -8,6 +8,17 @@ cp -avf "/ctx/system_files"/. /
 sed -i 's/^NAME=.*/NAME="Missouri OS"/' /usr/lib/os-release
 sed -i 's/^PRETTY_NAME=.*/PRETTY_NAME="Missouri OS"/' /usr/lib/os-release
 
+# Install Missouri OS branding logo
+install -Dm644 /ctx/system_files/missouri-os-logo.png \
+  /usr/share/pixmaps/missouri-os-logo.png
+
+# Tell desktop tools which distribution logo to use
+if grep -q '^LOGO=' /usr/lib/os-release; then
+  sed -i 's/^LOGO=.*/LOGO=missouri-os-logo/' /usr/lib/os-release
+else
+  echo 'LOGO=missouri-os-logo' >> /usr/lib/os-release
+fi
+
 
 ### Install packages
 
