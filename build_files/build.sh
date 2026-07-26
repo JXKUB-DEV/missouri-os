@@ -8,6 +8,7 @@ cp -avf "/ctx/system_files"/. /
 sed -i 's/^NAME=.*/NAME="Missouri OS"/' /usr/lib/os-release
 sed -i 's/^PRETTY_NAME=.*/PRETTY_NAME="Missouri OS"/' /usr/lib/os-release
 
+
 ### Install packages
 
 # Packages can be installed from any enabled yum repo on the image.
