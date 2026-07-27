@@ -1,0 +1,54 @@
+#!/bin/bash
+
+MARKER="${HOME}/.config/missouri-launcher-logo-set"
+
+# Nur einmal pro Benutzer ausführen
+if [[ -f "${MARKER}" ]]; then
+    exit 0
+fi
+
+# Auf Plasma 6 und ältere Varianten vorbereitet
+if command -v qdbus6 >/dev/null 2>&1; then
+    QDBUS="$(command -v qdbus6)"
+elif command -v qdbus >/dev/null 2>&1; then
+    QDBUS="$(command -v qdbus)"
+else
+    exit 0
+fi
+
+PLASMA_SCRIPT='
+var changed = 0;
+var panelList = panels();
+
+for (var i = 0; i < panelList.length; i++) {
+    var launchers = [];
+
+    launchers = launchers.concat(
+        panelList[i].widgets("org.kde.plasma.kickoff")
+    );
+    launchers = launchers.concat(
+        panelList[i].widgets("org.kde.plasma.kicker")
+    );
+    launchers = launchers.concat(
+        panelList[i].widgets("org.kde.plasma.kickerdash")
+    );
+
+    for (var j = 0; j < launchers.length; j++) {
+        launchers[j].currentConfigGroup = [];
+        launchers[j].writeConfig("icon", "missouri-os-logo");
+        launchers[j].reloadConfig();
+        changed++;
+    }
+}
+
+print(changed);
+'
+
+if "${QDBUS}" org.kde.plasmashell \
+    /PlasmaShell \
+    org.kde.PlasmaShell.evaluateScript \
+    "${PLASMA_SCRIPT}"; then
+
+    mkdir -p "${HOME}/.config"
+    touch "${MARKER}"
+fi
