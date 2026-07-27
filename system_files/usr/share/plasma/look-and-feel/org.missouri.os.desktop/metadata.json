@@ -1,0 +1,15 @@
+{
+  "KPackageStructure": "Plasma/LookAndFeel",
+  "KPlugin": {
+    "Id": "org.missouri.os.desktop",
+    "Name": "Missouri OS",
+    "Description": "Missouri OS startup splash",
+    "Version": "1.0",
+    "Authors": [
+      {
+        "Name": "JXKUB"
+      }
+    ],
+    "License": "GPL-2.0-or-later"
+  }
+}
