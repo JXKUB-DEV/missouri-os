@@ -1,0 +1,8 @@
+[Plymouth Theme]
+Name=Missouri OS
+Description=Official Missouri OS boot theme
+ModuleName=script
+
+[script]
+ImageDir=/usr/share/plymouth/themes/missouri
+ScriptFile=/usr/share/plymouth/themes/missouri/missouri.script
