@@ -17,6 +17,20 @@ install -Dm644 \
   "/ctx/system_files/missouri-os-logo.png" \
   "/usr/share/pixmaps/missouri-os-logo.png"
 
+  # ---------------------------------------------------------
+# Missouri OS Plymouth boot branding
+# ---------------------------------------------------------
+
+# Replace the normal Breeze boot logo
+install -Dm644 \
+  "/ctx/system_files/missouri-os-plymouth-logo.png" \
+  "/usr/share/plymouth/themes/breeze/images/os.logo.png"
+
+# Replace the low-color fallback boot logo
+install -Dm644 \
+  "/ctx/system_files/missouri-os-plymouth-logo-16bit.png" \
+  "/usr/share/plymouth/themes/breeze/images/16bit/os.logo.png"
+
   # Install Missouri OS icon for desktop applications
 install -Dm644 \
   "/ctx/system_files/missouri-os-logo.png" \
@@ -91,12 +105,14 @@ EOF
 # Remove the temporary asset copies from the filesystem root
 rm -f /missouri-os-logo.png
 rm -f /missouri-os-wallpaper.png
+rm -f /missouri-os-plymouth-logo.png
+rm -f /missouri-os-plymouth-logo-16bit.png
 
 # ---------------------------------------------------------
 # Packages from the original image template
 # ---------------------------------------------------------
 
-dnf5 install -y tmux
+dnf5 install -y tmux plymouth-theme-breeze
 
 # Enable Podman socket
 systemctl enable podman.socket
