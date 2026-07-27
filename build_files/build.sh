@@ -19,6 +19,57 @@ else
   echo 'LOGO=missouri-os-logo' >> /usr/lib/os-release
 fi
 
+# Install Missouri OS wallpaper
+install -Dm644 /ctx/system_files/missouri-os-wallpaper.png \
+  /usr/share/wallpapers/MissouriOS/contents/images/3840x2160.png
+
+# Wallpaper information for KDE
+cat > /usr/share/wallpapers/MissouriOS/metadata.json <<'EOF'
+{
+  "KPlugin": {
+    "Id": "MissouriOS",
+    "Name": "Missouri OS",
+    "Description": "Official Missouri OS wallpaper",
+    "Authors": [
+      {
+        "Name": "JXKUB"
+      }
+    ]
+  }
+}
+EOF
+
+# Script that sets the wallpaper once for every user
+install -d /usr/local/bin
+cat > /usr/local/bin/missouri-set-wallpaper <<'EOF'
+#!/bin/bash
+
+MARKER="$HOME/.config/missouri-wallpaper-set"
+
+if [ ! -f "$MARKER" ]; then
+    if command -v plasma-apply-wallpaperimage >/dev/null 2>&1; then
+        plasma-apply-wallpaperimage \
+          /usr/share/wallpapers/MissouriOS/contents/images/3840x2160.png
+        mkdir -p "$HOME/.config"
+        touch "$MARKER"
+    fi
+fi
+EOF
+
+chmod +x /usr/local/bin/missouri-set-wallpaper
+
+# Run the wallpaper script automatically after login
+install -d /etc/xdg/autostart
+cat > /etc/xdg/autostart/missouri-wallpaper.desktop <<'EOF'
+[Desktop Entry]
+Type=Application
+Name=Missouri OS Wallpaper
+Exec=/usr/local/bin/missouri-set-wallpaper
+OnlyShowIn=KDE;
+X-KDE-autostart-after=panel
+NoDisplay=true
+EOF
+
 
 ### Install packages
 
