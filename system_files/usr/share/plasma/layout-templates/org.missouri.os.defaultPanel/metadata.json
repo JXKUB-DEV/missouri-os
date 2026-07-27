@@ -4,7 +4,13 @@
     "Name": "Missouri OS Default Panel",
     "Description": "Default Plasma panel layout for Missouri OS",
     "Version": "1.0",
-    "License": "GPL-2.0+"
+    "License": "GPL-2.0+",
+    "EnabledByDefault": true
   },
-  "X-Plasma-ShellPackage": "org.kde.plasma.desktop"
+  "X-Plasma-ContainmentCategories": [
+    "panel"
+  ],
+  "X-Plasma-Shell": "plasma-desktop",
+  "X-KDE-PluginInfo-Name": "org.missouri.os.defaultPanel",
+  "KPackageStructure": "Plasma/LayoutTemplate"
 }
