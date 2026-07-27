@@ -1,0 +1,7 @@
+[General]
+showlogo=shown
+showClock=true
+logo=/usr/share/pixmaps/missouri-os-logo.png
+type=image
+background=/usr/share/wallpapers/MissouriOS/contents/images/3840x2160.png
+needsFullUserModel=false
