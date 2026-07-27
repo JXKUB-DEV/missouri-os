@@ -17,6 +17,11 @@ install -Dm644 \
   "/ctx/system_files/missouri-os-logo.png" \
   "/usr/share/pixmaps/missouri-os-logo.png"
 
+  # Install Missouri OS icon for desktop applications
+install -Dm644 \
+  "/ctx/system_files/missouri-os-logo.png" \
+  "/usr/share/icons/hicolor/512x512/apps/missouri-os-logo.png"
+
 # Tell desktop programs which distribution logo to use
 if grep -q '^LOGO=' /usr/lib/os-release; then
   sed -i 's/^LOGO=.*/LOGO=missouri-os-logo/' /usr/lib/os-release
