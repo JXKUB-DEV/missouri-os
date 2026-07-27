@@ -1,0 +1,10 @@
+{
+  "KPlugin": {
+    "Id": "org.missouri.os.defaultPanel",
+    "Name": "Missouri OS Default Panel",
+    "Description": "Default Plasma panel layout for Missouri OS",
+    "Version": "1.0",
+    "License": "GPL-2.0+"
+  },
+  "X-Plasma-ShellPackage": "org.kde.plasma.desktop"
+}
