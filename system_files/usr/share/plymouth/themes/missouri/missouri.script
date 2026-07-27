@@ -1,0 +1,40 @@
+Window.SetBackgroundTopColor(0.02, 0.025, 0.04);
+Window.SetBackgroundBottomColor(0.02, 0.025, 0.04);
+
+logo_image = Image("missouri-logo.png");
+logo_sprite = Sprite(logo_image);
+
+logo_sprite.SetX(
+    Window.GetWidth() / 2 - logo_image.GetWidth() / 2
+);
+
+logo_sprite.SetY(
+    Window.GetHeight() / 2 - logo_image.GetHeight() / 2 - 40
+);
+
+spinner_image = Image("spinner.png");
+spinner_sprite = Sprite(spinner_image);
+
+spinner_sprite.SetX(
+    Window.GetWidth() / 2 - spinner_image.GetWidth() / 2
+);
+
+spinner_sprite.SetY(
+    Window.GetHeight() / 2 + logo_image.GetHeight() / 2 + 25
+);
+
+progress = 0;
+
+fun refresh_callback ()
+{
+    progress += 0.08;
+
+    if (progress > 6.28)
+        progress = 0;
+
+    spinner_sprite.SetOpacity(
+        0.55 + 0.45 * Math.Sin(progress)
+    );
+}
+
+Plymouth.SetRefreshFunction(refresh_callback);
