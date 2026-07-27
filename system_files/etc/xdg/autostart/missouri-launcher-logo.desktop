@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+Name=Missouri OS Launcher Branding
+Exec=/bin/bash /usr/bin/missouri-set-launcher-logo
+OnlyShowIn=KDE;
+X-KDE-autostart-after=panel
+NoDisplay=true
