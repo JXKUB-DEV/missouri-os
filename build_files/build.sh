@@ -152,4 +152,6 @@ rm -f \
 # Enable services
 # ---------------------------------------------------------
 
+bash /ctx/build_files/install-aic8800.sh
+
 systemctl enable podman.socket
