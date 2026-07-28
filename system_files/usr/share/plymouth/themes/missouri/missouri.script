@@ -9,18 +9,7 @@ logo_sprite.SetX(
 );
 
 logo_sprite.SetY(
-    Window.GetHeight() / 2 - logo_image.GetHeight() / 2 - 40
-);
-
-spinner_image = Image("spinner.png");
-spinner_sprite = Sprite(spinner_image);
-
-spinner_sprite.SetX(
-    Window.GetWidth() / 2 - spinner_image.GetWidth() / 2
-);
-
-spinner_sprite.SetY(
-    Window.GetHeight() / 2 + logo_image.GetHeight() / 2 + 25
+    Window.GetHeight() / 2 - logo_image.GetHeight() / 2
 );
 
 progress = 0;
@@ -32,8 +21,8 @@ fun refresh_callback ()
     if (progress > 6.28)
         progress = 0;
 
-    spinner_sprite.SetOpacity(
-        0.55 + 0.45 * Math.Sin(progress)
+    logo_sprite.SetOpacity(
+        0.75 + 0.25 * Math.Sin(progress)
     );
 }
 
