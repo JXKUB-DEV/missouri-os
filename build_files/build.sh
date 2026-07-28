@@ -149,9 +149,13 @@ rm -f \
   /missouri-os-plymouth-logo-16bit.png
 
 # ---------------------------------------------------------
-# Enable services
+# Build AIC8800D80 driver
 # ---------------------------------------------------------
 
-bash /ctx/build_files/install-aic8800.sh
+bash /ctx/install-aic8800.sh
+
+# ---------------------------------------------------------
+# Enable services
+# ---------------------------------------------------------
 
 systemctl enable podman.socket
