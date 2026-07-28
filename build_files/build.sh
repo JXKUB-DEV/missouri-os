@@ -21,15 +21,23 @@ install -Dm644 \
 # Missouri OS Plymouth boot branding
 # ---------------------------------------------------------
 
-# Replace the normal Breeze boot logo
+# Install Missouri OS Plymouth assets
 install -Dm644 \
   "/ctx/system_files/missouri-os-plymouth-logo.png" \
-  "/usr/share/plymouth/themes/breeze/images/os.logo.png"
+  "/usr/share/plymouth/themes/missouri/missouri-logo.png"
 
-# Replace the low-color fallback boot logo
 install -Dm644 \
-  "/ctx/system_files/missouri-os-plymouth-logo-16bit.png" \
-  "/usr/share/plymouth/themes/breeze/images/16bit/os.logo.png"
+  "/ctx/system_files/missouri-os-plymouth-logo.png" \
+  "/usr/share/plymouth/themes/missouri/spinner.png"
+
+# Select Missouri as the default Plymouth theme
+mkdir -p /etc/plymouth
+
+cat > /etc/plymouth/plymouthd.conf <<'EOF'
+[Daemon]
+Theme=missouri
+ShowDelay=0
+EOF
 
   # Install Missouri OS icon for desktop applications
 install -Dm644 \
